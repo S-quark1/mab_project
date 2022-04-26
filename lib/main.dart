@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get_movie/views/imgbb_search_page.dart';
 import 'package:get_movie/views/search_page.dart';
 
 void main() async{
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
             print('You have an error: ${snapshot.error.toString()}');
             return const Text('Something went wrong!');
           } else if (snapshot.hasData){
-            return const SearchPage();
+            // return const SearchPage();
+            return const ImgbbSearch();
           } else{
             return const Center(
               child: CircularProgressIndicator(),
