@@ -1,10 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_movie/views/search_page.dart';
 
-void main() => runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const SearchPage(),
+      home: FutureBuilder(
+        future: _fbApp,
+        builder: (context, snapshot){
+          if (snapshot.hasError){
+            print('You have an error: ${snapshot.error.toString()}');
+            return const Text('Something went wrong!');
+          } else if (snapshot.hasData){
+            return const SearchPage();
+          } else{
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      )
       // home: Scaffold(
       //   appBar: AppBar(title: Text('Flutter Client')),
       //   body: BodyWidget(),

@@ -54,49 +54,43 @@ class GetMovie {
 
 class ImageResult {
   ImageResult({
-    this.position,
-    this.title,
-    this.link,
-    this.displayedLink,
-    this.date,
-    this.snippet,
+    required this.position,
+    required this.title,
+    required this.link,
+    required this.displayedLink,
+    required this.snippet,
     required this.snippetHighlightedWords,
-    required this.aboutThisResult,
-    this.aboutPageLink,
-    this.cachedPageLink,
+    // required this.cachedPageLink,
     this.thumbnail,
-    this.imageResolution,
-    required this.richSnippet,
+    // required this.richSnippet,
+    // required this.imageResolution,
+    // required this.relatedPagesLink,
   });
 
-  int? position;
-  String? title;
-  String? link;
-  String? displayedLink;
-  String? date;
-  String? snippet;
+  int position;
+  String title;
+  String link;
+  String displayedLink;
+  String snippet;
   List<String> snippetHighlightedWords;
-  AboutThisResult aboutThisResult;
-  String? aboutPageLink;
-  String? cachedPageLink;
+  // String cachedPageLink;
   String? thumbnail;
-  String? imageResolution;
-  RichSnippet richSnippet;
+  // RichSnippet richSnippet;
+  // String imageResolution;
+  // String relatedPagesLink;
 
   factory ImageResult.fromJson(Map<String, dynamic> json) => ImageResult(
     position: json["position"],
     title: json["title"],
     link: json["link"],
     displayedLink: json["displayed_link"],
-    date: json["date"] == null ? null : json["date"],
     snippet: json["snippet"],
     snippetHighlightedWords: List<String>.from(json["snippet_highlighted_words"].map((x) => x)),
-    aboutThisResult: AboutThisResult.fromJson(json["about_this_result"]),
-    aboutPageLink: json["about_page_link"],
-    cachedPageLink: json["cached_page_link"],
+    // cachedPageLink: json["cached_page_link"],
     thumbnail: json["thumbnail"] == null ? null : json["thumbnail"],
-    imageResolution: json["image_resolution"] == null ? null : json["image_resolution"],
-    richSnippet: json["rich_snippet"] == null ? null : (json["rich_snippet"]),
+    // richSnippet: json["rich_snippet"] == null ? null : (json["rich_snippet"]),
+    // imageResolution: json["image_resolution"] == null ? null : json["image_resolution"],
+    // relatedPagesLink: json["related_pages_link"] == null ? null : json["related_pages_link"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -104,51 +98,13 @@ class ImageResult {
     "title": title,
     "link": link,
     "displayed_link": displayedLink,
-    "date": date == null ? null : date,
     "snippet": snippet,
     "snippet_highlighted_words": List<dynamic>.from(snippetHighlightedWords.map((x) => x)),
-    "about_this_result": aboutThisResult.toJson(),
-    "about_page_link": aboutPageLink,
-    "cached_page_link": cachedPageLink,
+    // "cached_page_link": cachedPageLink,
     "thumbnail": thumbnail == null ? null : thumbnail,
-    "image_resolution": imageResolution == null ? null : imageResolution,
-    "rich_snippet": richSnippet == null ? null : richSnippet.toJson(),
-  };
-}
-
-class AboutThisResult {
-  AboutThisResult({
-    required this.source,
-  });
-
-  Source source;
-
-  factory AboutThisResult.fromJson(Map<String, dynamic> json) => AboutThisResult(
-    source: Source.fromJson(json["source"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "source": source.toJson(),
-  };
-}
-
-class Source {
-  Source({
-    this.description,
-    this.icon,
-  });
-
-  String? description;
-  String? icon;
-
-  factory Source.fromJson(Map<String, dynamic> json) => Source(
-    description: json["description"],
-    icon: json["icon"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "description": description,
-    "icon": icon,
+    // "rich_snippet": richSnippet == null ? null : richSnippet.toJson(),
+    // "image_resolution": imageResolution == null ? null : imageResolution,
+    // "related_pages_link": relatedPagesLink == null ? null : relatedPagesLink,
   };
 }
 
@@ -190,46 +146,38 @@ class Top {
 
 class DetectedExtensions {
   DetectedExtensions({
-    this.empty,
-    this.mar,
-    this.jan,
-    this.dec,
-    this.jul,
+    required this.empty,
+    this.jun,
+    this.may,
   });
 
-  int? empty;
-  int? mar;
-  int? jan;
-  int? dec;
-  int? jul;
+  int empty;
+  dynamic jun;
+  dynamic may;
 
   factory DetectedExtensions.fromJson(Map<String, dynamic> json) => DetectedExtensions(
     empty: json["×"],
-    mar: json["mar"] == null ? null : json["mar"],
-    jan: json["jan"] == null ? null : json["jan"],
-    dec: json["dec"] == null ? null : json["dec"],
-    jul: json["jul"] == null ? null : json["jul"],
+    jun: json["jun"],
+    may: json["may"],
   );
 
   Map<String, dynamic> toJson() => {
     "×": empty,
-    "mar": mar == null ? null : mar,
-    "jan": jan == null ? null : jan,
-    "dec": dec == null ? null : dec,
-    "jul": jul == null ? null : jul,
+    "jun": jun,
+    "may": may,
   };
 }
 
 class ImageSize {
   ImageSize({
-    this.title,
-    this.link,
-    this.serpapiLink,
+    required this.title,
+    required this.link,
+    required this.serpapiLink,
   });
 
-  String? title;
-  String? link;
-  String? serpapiLink;
+  String title;
+  String link;
+  String serpapiLink;
 
   factory ImageSize.fromJson(Map<String, dynamic> json) => ImageSize(
     title: json["title"],
@@ -246,14 +194,14 @@ class ImageSize {
 
 class InlineImage {
   InlineImage({
-    this.link,
-    this.source,
-    this.thumbnail,
+    required this.link,
+    required this.source,
+    required this.thumbnail,
   });
 
-  String? link;
-  String? source;
-  String? thumbnail;
+  String link;
+  String source;
+  String thumbnail;
 
   factory InlineImage.fromJson(Map<String, dynamic> json) => InlineImage(
     link: json["link"],
@@ -270,16 +218,16 @@ class InlineImage {
 
 class SearchInformation {
   SearchInformation({
-    this.organicResultsState,
+    required this.organicResultsState,
     required this.queryDisplayed,
-    this.totalResults,
-    this.timeTakenDisplayed,
+    required this.totalResults,
+    required this.timeTakenDisplayed,
   });
 
-  String? organicResultsState;
+  String organicResultsState;
   String queryDisplayed;
-  int? totalResults;
-  double? timeTakenDisplayed;
+  int totalResults;
+  double timeTakenDisplayed;
 
   factory SearchInformation.fromJson(Map<String, dynamic> json) => SearchInformation(
     organicResultsState: json["organic_results_state"],
@@ -298,24 +246,24 @@ class SearchInformation {
 
 class SearchMetadata {
   SearchMetadata({
-    this.id,
-    this.status,
-    this.jsonEndpoint,
-    this.createdAt,
-    this.processedAt,
-    this.googleReverseImageUrl,
-    this.rawHtmlFile,
-    this.totalTimeTaken,
+    required this.id,
+    required this.status,
+    required this.jsonEndpoint,
+    required this.createdAt,
+    required this.processedAt,
+    required this.googleReverseImageUrl,
+    required this.rawHtmlFile,
+    required this.totalTimeTaken,
   });
 
-  String? id;
-  String? status;
-  String? jsonEndpoint;
-  String? createdAt;
-  String? processedAt;
-  String? googleReverseImageUrl;
-  String? rawHtmlFile;
-  double? totalTimeTaken;
+  String id;
+  String status;
+  String jsonEndpoint;
+  String createdAt;
+  String processedAt;
+  String googleReverseImageUrl;
+  String rawHtmlFile;
+  double totalTimeTaken;
 
   factory SearchMetadata.fromJson(Map<String, dynamic> json) => SearchMetadata(
     id: json["id"],
@@ -345,13 +293,13 @@ class SearchParameters {
     required this.engine,
     required this.imageUrl,
     required this.googleDomain,
-    this.device,
+    required this.device,
   });
 
   String engine;
   String imageUrl;
   String googleDomain;
-  String? device;
+  String device;
 
   factory SearchParameters.fromJson(Map<String, dynamic> json) => SearchParameters(
     engine: json["engine"],
