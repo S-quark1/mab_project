@@ -4,14 +4,11 @@ import 'package:get_movie/views/imgbb_search_page.dart';
 import 'package:get_movie/views/search_page.dart';
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: FutureBuilder(
-        future: _fbApp,
-        builder: (context, snapshot){
-          if (snapshot.hasError){
-            print('You have an error: ${snapshot.error.toString()}');
-            return const Text('Something went wrong!');
-          } else if (snapshot.hasData){
-            // return const SearchPage();
-            return const ImgbbSearch();
-          } else{
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      )
+      home: const SearchPage()
       // home: Scaffold(
       //   appBar: AppBar(title: Text('Flutter Client')),
       //   body: BodyWidget(),

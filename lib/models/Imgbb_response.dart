@@ -44,9 +44,9 @@ class Data {
     this.size,
     this.time,
     this.expiration,
-    required this.image,
-    required this.thumb,
-    required this.medium,
+    // required this.image,
+    // required this.thumb,
+    // required this.medium,
     required this.deleteUrl,
   });
 
@@ -60,9 +60,9 @@ class Data {
   int? size;
   String? time;
   String? expiration;
-  Image image;
-  Image thumb;
-  Image medium;
+  // Image image;
+  // Image thumb;
+  // Image medium;
   String deleteUrl;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
@@ -76,9 +76,9 @@ class Data {
     size: json["size"],
     time: json["time"],
     expiration: json["expiration"],
-    image: Image.fromJson(json["image"]),
-    thumb: Image.fromJson(json["thumb"]),
-    medium: Image.fromJson(json["medium"]),
+    // image: Image.fromJson(json["image"]),
+    // thumb: Image.fromJson(json["thumb"]),
+    // medium: Image.fromJson(json["medium"]),
     deleteUrl: json["delete_url"],
   );
 
@@ -93,41 +93,41 @@ class Data {
     "size": size,
     "time": time,
     "expiration": expiration,
-    "image": image.toJson(),
-    "thumb": thumb.toJson(),
-    "medium": medium.toJson(),
+    // "image": image.toJson(),
+    // "thumb": thumb.toJson(),
+    // "medium": medium.toJson(),
     "delete_url": deleteUrl,
   };
 }
 
-class Image {
-  Image({
-    this.filename,
-    this.name,
-    this.mime,
-    this.extension,
-    this.url,
-  });
-
-  String? filename;
-  String? name;
-  String? mime;
-  String? extension;
-  String? url;
-
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
-    filename: json["filename"],
-    name: json["name"],
-    mime: json["mime"],
-    extension: json["extension"],
-    url: json["url"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "filename": filename,
-    "name": name,
-    "mime": mime,
-    "extension": extension,
-    "url": url,
-  };
-}
+// class Image {
+//   Image({
+//     this.filename,
+//     this.name,
+//     this.mime,
+//     this.extension,
+//     this.url,
+//   });
+//
+//   String? filename;
+//   String? name;
+//   String? mime;
+//   String? extension;
+//   String? url;
+//
+//   factory Image.fromJson(Map<String, dynamic> json) => Image(
+//     filename: json["filename"],
+//     name: json["name"],
+//     mime: json["mime"],
+//     extension: json["extension"],
+//     url: json["url"],
+//   );
+//
+//   Map<String, dynamic> toJson() => {
+//     "filename": filename,
+//     "name": name,
+//     "mime": mime,
+//     "extension": extension,
+//     "url": url,
+//   };
+// }

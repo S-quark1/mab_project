@@ -52,7 +52,6 @@ class _ImgbbSearchState extends State<ImgbbSearch> {
     var buffer = bytes.buffer;
     var m = base64.encode(Uint8List.view(buffer));
 
-    print(m);
     FormData formData = FormData.fromMap(
         {"key": 'eda9abc46fc3adaaa77c1da20bdaa057', "image": m});
 

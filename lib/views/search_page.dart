@@ -1,10 +1,13 @@
 // import 'dart:html';
+import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get_movie/models/search.dart';
+import 'package:get_movie/services/Imgbb_image_storage.dart';
 import 'package:get_movie/services/image_storage_service.dart';
 import 'package:get_movie/services/remote_service.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -16,11 +19,27 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   GetMovie? movieObject;
   var isLoaded = false;
+  File? _image;
+  final picker = ImagePicker();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  Future getImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('No image selected'),
+      ));
+      return;
+    }
+    setState(() {
+      _image = File(pickedFile.path);
+    });
   }
 
   _getData(
@@ -40,7 +59,8 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    final ImageStorage storage = ImageStorage();
+    // final ImageStorage storage = ImageStorage();
+    final Imgbb imgbb = Imgbb();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ayo"),
@@ -57,23 +77,14 @@ class _SearchPageState extends State<SearchPage> {
                 ElevatedButton(
                   child: const Text('Upload photo'),
                   onPressed: () async {
-                    final results = await FilePicker.platform.pickFiles(
-                      allowMultiple: false,
-                      type: FileType.custom,
-                      allowedExtensions: ['png', 'jpg', 'tiff', 'heic'],
-                    );
-                    if (results == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('No image selected'),
-                      ));
-                      return;
-                    }
-                    final _path = results.files.single.path!;
-                    final _filename = results.files.single.name;
-                    storage.uploadFile(_path, _filename).then((value) {
-                      // print(value);
-                      _getData(value);
-                    });
+                    await getImage();
+                    imgbb
+                        .uploadImageFile(_image!)
+                        .then((value) => _getData(value));
+                    // storage.uploadFile(_path, _filename).then((value) {
+                    //   // print(value);
+                    //   _getData(value);
+                    // });
                   },
                 ),
                 Visibility(
@@ -100,6 +111,12 @@ class _SearchPageState extends State<SearchPage> {
                           const TextSpan(text: '\ndescription: '),
                           TextSpan(
                               text: movieObject?.imageResults[0].snippet,
+                              style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Color.fromARGB(255, 113, 23, 219))),
+                          const TextSpan(text: '\nmore on: '),
+                          TextSpan(
+                              text: movieObject?.imageResults[0].link,
                               style: const TextStyle(
                                   fontStyle: FontStyle.italic,
                                   color: Color.fromARGB(255, 113, 23, 219))),

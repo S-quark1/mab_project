@@ -13,30 +13,30 @@ class GetMovie {
     required this.searchMetadata,
     required this.searchParameters,
     required this.searchInformation,
-    required this.imageSizes,
+    // required this.imageSizes,
     required this.inlineImages,
-    required this.inlineImagesLink,
-    required this.inlineImagesSerpapiLink,
+    // required this.inlineImagesLink,
+    // required this.inlineImagesSerpapiLink,
     required this.imageResults,
   });
 
   SearchMetadata searchMetadata;
   SearchParameters searchParameters;
   SearchInformation searchInformation;
-  List<ImageSize> imageSizes;
+  // List<ImageSize> imageSizes;
   List<InlineImage> inlineImages;
-  String inlineImagesLink;
-  String inlineImagesSerpapiLink;
+  // String inlineImagesLink;
+  // String inlineImagesSerpapiLink;
   List<ImageResult> imageResults;
 
   factory GetMovie.fromJson(Map<String, dynamic> json) => GetMovie(
     searchMetadata: SearchMetadata.fromJson(json["search_metadata"]),
     searchParameters: SearchParameters.fromJson(json["search_parameters"]),
     searchInformation: SearchInformation.fromJson(json["search_information"]),
-    imageSizes: List<ImageSize>.from(json["image_sizes"].map((x) => ImageSize.fromJson(x))),
+    // imageSizes: List<ImageSize>.from(json["image_sizes"].map((x) => ImageSize.fromJson(x))),
     inlineImages: List<InlineImage>.from(json["inline_images"].map((x) => InlineImage.fromJson(x))),
-    inlineImagesLink: json["inline_images_link"],
-    inlineImagesSerpapiLink: json["inline_images_serpapi_link"],
+    // inlineImagesLink: json["inline_images_link"],
+    // inlineImagesSerpapiLink: json["inline_images_serpapi_link"],
     imageResults: List<ImageResult>.from(json["image_results"].map((x) => ImageResult.fromJson(x))),
   );
 
@@ -44,10 +44,10 @@ class GetMovie {
     "search_metadata": searchMetadata.toJson(),
     "search_parameters": searchParameters.toJson(),
     "search_information": searchInformation.toJson(),
-    "image_sizes": List<dynamic>.from(imageSizes.map((x) => x.toJson())),
+    // "image_sizes": List<dynamic>.from(imageSizes.map((x) => x.toJson())),
     "inline_images": List<dynamic>.from(inlineImages.map((x) => x.toJson())),
-    "inline_images_link": inlineImagesLink,
-    "inline_images_serpapi_link": inlineImagesSerpapiLink,
+    // "inline_images_link": inlineImagesLink,
+    // "inline_images_serpapi_link": inlineImagesSerpapiLink,
     "image_results": List<dynamic>.from(imageResults.map((x) => x.toJson())),
   };
 }
