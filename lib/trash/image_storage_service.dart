@@ -16,10 +16,6 @@ class ImageStorage {
       await storage.ref('films/$fileName').putFile(file);
       String url =
           (await storage.ref('films/$fileName').getDownloadURL()).toString();
-      // print('********************************');
-      // print(filePath);
-      // print(fileName);
-      // print(url);
       return url;
     } on firebase_core.FirebaseException catch (e) {
       print(e);

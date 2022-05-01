@@ -19,7 +19,7 @@ class Imgbb {
     var m = base64.encode(Uint8List.view(buffer));
 
     FormData formData = FormData.fromMap(
-        {"key": 'eda9abc46fc3adaaa77c1da20bdaa057', "image": m});
+        {"key": 'd23615e2043fea129c10100f86bcdbe6', "image": m});
 
     Response response = await dio.post(
       "https://api.imgbb.com/1/upload",

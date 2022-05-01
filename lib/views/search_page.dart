@@ -1,11 +1,9 @@
 // import 'dart:html';
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get_movie/models/search.dart';
 import 'package:get_movie/services/Imgbb_image_storage.dart';
-import 'package:get_movie/services/image_storage_service.dart';
 import 'package:get_movie/services/remote_service.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,6 +17,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   GetMovie? movieObject;
   var isLoaded = false;
+  var idle = true; // тут я хотела красиво сделать но что-то пошло не так
   File? _image;
   final picker = ImagePicker();
 
@@ -28,6 +27,7 @@ class _SearchPageState extends State<SearchPage> {
     super.initState();
   }
 
+  //picks the image
   Future getImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
@@ -42,6 +42,7 @@ class _SearchPageState extends State<SearchPage> {
     });
   }
 
+  // gets the data
   _getData(
     var imageUrl,
   ) async {
@@ -59,7 +60,6 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    // final ImageStorage storage = ImageStorage();
     final Imgbb imgbb = Imgbb();
     return Scaffold(
       appBar: AppBar(
@@ -77,20 +77,17 @@ class _SearchPageState extends State<SearchPage> {
                 ElevatedButton(
                   child: const Text('Upload photo'),
                   onPressed: () async {
+                    isLoaded = false;
                     await getImage();
                     imgbb
                         .uploadImageFile(_image!)
                         .then((value) => _getData(value));
-                    // storage.uploadFile(_path, _filename).then((value) {
-                    //   // print(value);
-                    //   _getData(value);
-                    // });
                   },
                 ),
                 Visibility(
                   visible: isLoaded,
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: RichText(
                       textDirection: TextDirection.ltr,
                       // textAlign: Alignment.center,
@@ -104,19 +101,19 @@ class _SearchPageState extends State<SearchPage> {
                           const TextSpan(text: 'name of the movie: '),
                           TextSpan(
                               text: movieObject
-                                  ?.imageResults[0].snippetHighlightedWords[0],
+                                  ?.imageResults![0].snippetHighlightedWords![0] ?? "sorry, couldn't find",
                               style: const TextStyle(
                                   fontStyle: FontStyle.italic,
                                   color: Color.fromARGB(255, 113, 23, 219))),
                           const TextSpan(text: '\ndescription: '),
                           TextSpan(
-                              text: movieObject?.imageResults[0].snippet,
+                              text: movieObject?.imageResults![0].snippet ?? "sorry, couldn't find",
                               style: const TextStyle(
                                   fontStyle: FontStyle.italic,
                                   color: Color.fromARGB(255, 113, 23, 219))),
                           const TextSpan(text: '\nmore on: '),
                           TextSpan(
-                              text: movieObject?.imageResults[0].link,
+                              text: movieObject?.imageResults![0].link ?? "sorry, couldn't find",
                               style: const TextStyle(
                                   fontStyle: FontStyle.italic,
                                   color: Color.fromARGB(255, 113, 23, 219))),
@@ -124,7 +121,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                   ),
-                  replacement: const Center(child: Text('waiting...')),
+                  replacement: const Center(child: Text('waiting for the request...')),
                 ),
               ],
             ),

@@ -10,56 +10,56 @@ String getMovieToJson(GetMovie data) => json.encode(data.toJson());
 
 class GetMovie {
   GetMovie({
-    required this.searchMetadata,
-    required this.searchParameters,
-    required this.searchInformation,
+    // required this.searchMetadata,
+    // required this.searchParameters,
+    // required this.searchInformation,
     // required this.imageSizes,
-    required this.inlineImages,
+    // required this.inlineImages,
     // required this.inlineImagesLink,
     // required this.inlineImagesSerpapiLink,
-    required this.imageResults,
+    this.imageResults,
   });
 
-  SearchMetadata searchMetadata;
-  SearchParameters searchParameters;
-  SearchInformation searchInformation;
+  // SearchMetadata searchMetadata;
+  // SearchParameters searchParameters;
+  // SearchInformation searchInformation;
   // List<ImageSize> imageSizes;
-  List<InlineImage> inlineImages;
+  // List<InlineImage> inlineImages;
   // String inlineImagesLink;
   // String inlineImagesSerpapiLink;
-  List<ImageResult> imageResults;
+  List<ImageResult>? imageResults;
 
   factory GetMovie.fromJson(Map<String, dynamic> json) => GetMovie(
-    searchMetadata: SearchMetadata.fromJson(json["search_metadata"]),
-    searchParameters: SearchParameters.fromJson(json["search_parameters"]),
-    searchInformation: SearchInformation.fromJson(json["search_information"]),
+    // searchMetadata: SearchMetadata.fromJson(json["search_metadata"]),
+    // searchParameters: SearchParameters.fromJson(json["search_parameters"]),
+    // searchInformation: SearchInformation.fromJson(json["search_information"]),
     // imageSizes: List<ImageSize>.from(json["image_sizes"].map((x) => ImageSize.fromJson(x))),
-    inlineImages: List<InlineImage>.from(json["inline_images"].map((x) => InlineImage.fromJson(x))),
+    // inlineImages: List<InlineImage>.from(json["inline_images"].map((x) => InlineImage.fromJson(x))),
     // inlineImagesLink: json["inline_images_link"],
     // inlineImagesSerpapiLink: json["inline_images_serpapi_link"],
     imageResults: List<ImageResult>.from(json["image_results"].map((x) => ImageResult.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "search_metadata": searchMetadata.toJson(),
-    "search_parameters": searchParameters.toJson(),
-    "search_information": searchInformation.toJson(),
+    // "search_metadata": searchMetadata.toJson(),
+    // "search_parameters": searchParameters.toJson(),
+    // "search_information": searchInformation.toJson(),
     // "image_sizes": List<dynamic>.from(imageSizes.map((x) => x.toJson())),
-    "inline_images": List<dynamic>.from(inlineImages.map((x) => x.toJson())),
+    // "inline_images": List<dynamic>.from(inlineImages.map((x) => x.toJson())),
     // "inline_images_link": inlineImagesLink,
     // "inline_images_serpapi_link": inlineImagesSerpapiLink,
-    "image_results": List<dynamic>.from(imageResults.map((x) => x.toJson())),
+    "image_results": List<dynamic>.from(imageResults!.map((x) => x.toJson())),
   };
 }
 
 class ImageResult {
   ImageResult({
-    required this.position,
-    required this.title,
-    required this.link,
-    required this.displayedLink,
-    required this.snippet,
-    required this.snippetHighlightedWords,
+    // this.position,
+    this.title,
+    this.link,
+    this.displayedLink,
+    this.snippet,
+    this.snippetHighlightedWords,
     // required this.cachedPageLink,
     this.thumbnail,
     // required this.richSnippet,
@@ -67,12 +67,12 @@ class ImageResult {
     // required this.relatedPagesLink,
   });
 
-  int position;
-  String title;
-  String link;
-  String displayedLink;
-  String snippet;
-  List<String> snippetHighlightedWords;
+  // int? position;
+  String? title;
+  String? link;
+  String? displayedLink;
+  String? snippet;
+  List<String>? snippetHighlightedWords;
   // String cachedPageLink;
   String? thumbnail;
   // RichSnippet richSnippet;
@@ -80,12 +80,12 @@ class ImageResult {
   // String relatedPagesLink;
 
   factory ImageResult.fromJson(Map<String, dynamic> json) => ImageResult(
-    position: json["position"],
+    // position: json["position"],
     title: json["title"],
     link: json["link"],
     displayedLink: json["displayed_link"],
     snippet: json["snippet"],
-    snippetHighlightedWords: List<String>.from(json["snippet_highlighted_words"].map((x) => x)),
+    snippetHighlightedWords: json["snippet_highlighted_words"] != null ? List<String>.from(json["snippet_highlighted_words"].map((x) => x)): null,
     // cachedPageLink: json["cached_page_link"],
     thumbnail: json["thumbnail"] == null ? null : json["thumbnail"],
     // richSnippet: json["rich_snippet"] == null ? null : (json["rich_snippet"]),
@@ -94,12 +94,12 @@ class ImageResult {
   );
 
   Map<String, dynamic> toJson() => {
-    "position": position,
+    // "position": position,
     "title": title,
     "link": link,
     "displayed_link": displayedLink,
     "snippet": snippet,
-    "snippet_highlighted_words": List<dynamic>.from(snippetHighlightedWords.map((x) => x)),
+    "snippet_highlighted_words": List<dynamic>.from(snippetHighlightedWords!.map((x) => x)),
     // "cached_page_link": cachedPageLink,
     "thumbnail": thumbnail == null ? null : thumbnail,
     // "rich_snippet": richSnippet == null ? null : richSnippet.toJson(),

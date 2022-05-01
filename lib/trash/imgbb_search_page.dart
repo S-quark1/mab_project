@@ -120,13 +120,13 @@ class _ImgbbSearchState extends State<ImgbbSearch> {
                         const TextSpan(text: 'name of the movie: '),
                         TextSpan(
                             text: movieObject
-                                ?.imageResults[0].snippetHighlightedWords[0],
+                                ?.imageResults![0].snippetHighlightedWords![0] ?? "sorry, couldn't find",
                             style: const TextStyle(
                                 fontStyle: FontStyle.italic,
                                 color: Color.fromARGB(255, 113, 23, 219))),
                         const TextSpan(text: '\ndescription: '),
                         TextSpan(
-                            text: movieObject?.imageResults[0].snippet,
+                            text: movieObject?.imageResults![0].snippet ?? "sorry, couldn't find",
                             style: const TextStyle(
                                 fontStyle: FontStyle.italic,
                                 color: Color.fromARGB(255, 113, 23, 219))),
