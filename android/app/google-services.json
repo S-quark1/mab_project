@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "495828119534",
+    "project_id": "tadam-f1e0b",
+    "storage_bucket": "tadam-f1e0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495828119534:android:9836b497e0e4f4213a28ff",
+        "android_client_info": {
+          "package_name": "com.example.tadam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495828119534-k6unp7ohrbd6fs80muntgl4dostvhn4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU6ooAUPf6FAkrVlupb9tXnuLd-Zk_OvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495828119534-k6unp7ohrbd6fs80muntgl4dostvhn4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
