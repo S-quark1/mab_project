@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tadam/Information.dart';
+import 'package:tadam/AboutUs.dart';
 
 class Creators extends StatefulWidget {
   const Creators({Key? key}) : super(key: key);
@@ -303,7 +303,7 @@ class _CreatorsState extends State<Creators> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child:
-                        MovieCard("IT", "10/10", "assets/image/horror/boy.jpg"),
+                        MovieCard("The Boy", "10/10", "assets/image/horror/boy.jpg"),
                   ),
                 ],
               ),

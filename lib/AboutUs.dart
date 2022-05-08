@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Information extends StatefulWidget {
@@ -25,6 +26,47 @@ _launchURLApp(String url) async {
 }
 
 class _CreatorsState extends State<Information> {
+  final List locale = [
+    {'nameoflanguage': 'English', 'locale': Locale('en', 'US')},
+    {'nameoflanguage': 'Russian', 'locale': Locale('ru', 'IN')},
+  ];
+
+  updateLanguage(Locale locale){
+    Get.back();
+    Get.updateLocale(locale);
+  }
+
+  builddialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (builder) {
+          return AlertDialog(
+            title: Text('choose'.tr),
+            content: Container(
+                width: double.maxFinite,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                    itemBuilder: (context,index){
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                            onTap: (){
+                          updateLanguage(locale[index]['locale']);
+                        },
+                               child : Text(locale[index]['nameoflanguage'])),
+                      );
+                    },
+                    separatorBuilder:(context,index){
+                      return Divider(
+                        color: Colors.transparent
+                      );
+                    },
+                    itemCount: locale.length) // ListView.separated
+                ), // Container
+          ); // AlertDialog
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
@@ -35,10 +77,10 @@ class _CreatorsState extends State<Information> {
               'assets/image/logotadam.png',
               height: 250,
             ),
-            const Text(
-              'Calling Version: 2022.04.15.01.100',
+            Text(
+              'callingVersion'.tr,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontFamily: 'Infoblock',
                 fontWeight: FontWeight.bold,
@@ -53,11 +95,11 @@ class _CreatorsState extends State<Information> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 15.0),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Account",
-                    style: TextStyle(
+                    'account'.tr,
+                    style: const TextStyle(
                         fontSize: 19,
                         fontFamily: 'Zagolovok',
                         fontWeight: FontWeight.bold),
@@ -66,32 +108,34 @@ class _CreatorsState extends State<Information> {
                 const SizedBox(
                   height: 15.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Name",
-                    style: TextStyle(fontSize: 17.5, fontFamily: 'Zagolovok'),
+                    'name'.tr,
+                    style: const TextStyle(
+                        fontSize: 17.5, fontFamily: 'Zagolovok'),
                   ),
                 ),
                 const SizedBox(
                   height: 5.0,
                 ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 1.0, left: 15.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 1.0, left: 15.0),
                     child: Text(
-                      "Your Name and Surname",
-                      style: TextStyle(
+                      'subname'.tr,
+                      style: const TextStyle(
                         fontSize: 17.5,
                       ),
                     )),
                 const SizedBox(
                   height: 10.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Email",
-                    style: TextStyle(fontSize: 17.5, fontFamily: 'Zagolovok'),
+                    'email'.tr,
+                    style: const TextStyle(
+                        fontSize: 17.5, fontFamily: 'Zagolovok'),
                   ),
                 ),
                 const SizedBox(
@@ -109,11 +153,11 @@ class _CreatorsState extends State<Information> {
                 const SizedBox(
                   height: 15.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "About",
-                    style: TextStyle(
+                    'about'.tr,
+                    style: const TextStyle(
                         fontSize: 19,
                         fontFamily: 'Zagolovok',
                         fontWeight: FontWeight.bold),
@@ -122,11 +166,12 @@ class _CreatorsState extends State<Information> {
                 const SizedBox(
                   height: 15.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Version",
-                    style: TextStyle(fontSize: 17.5, fontFamily: 'Zagolovok'),
+                    'version'.tr,
+                    style: const TextStyle(
+                        fontSize: 17.5, fontFamily: 'Zagolovok'),
                   ),
                 ),
                 const SizedBox(
@@ -144,27 +189,59 @@ class _CreatorsState extends State<Information> {
                   height: 10.0,
                 ),
                 FlatButton(
+                    onPressed: () {
+                      builddialog(context);
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15.0),
+                          child: Text(
+                            'lang'.tr,
+                            style: const TextStyle(
+                                fontSize: 17.5, fontFamily: 'Zagolovok'),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 1.0),
+                          child: Text(
+                            'sublang'.tr,
+                            style: const TextStyle(
+                              fontSize: 17.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                FlatButton(
                     onPressed: (() => _launchURLApp(
                         'https://www.termsfeed.com/live/b3e3cb4f-63d6-4d48-b171-d4f20a16f589')),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 15.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Text(
-                            "Terms and Conditions",
-                            style: TextStyle(
+                            'terms'.tr,
+                            style: const TextStyle(
                                 fontSize: 17.5, fontFamily: 'Zagolovok'),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: 1.0),
+                          padding: const EdgeInsets.only(top: 1.0),
                           child: Text(
-                            "All the stuff you need to know",
-                            style: TextStyle(
+                            'subterms'.tr,
+                            style: const TextStyle(
                               fontSize: 17.5,
                             ),
                           ),
@@ -180,23 +257,23 @@ class _CreatorsState extends State<Information> {
                         'https://www.freeprivacypolicy.com/live/55f361c0-e12d-4a77-a512-d02cc55cd208')),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 15.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Text(
-                            "Privacy Policy",
-                            style: TextStyle(
+                            'privacy'.tr,
+                            style: const TextStyle(
                                 fontSize: 17.5, fontFamily: 'Zagolovok'),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: 1.0),
+                          padding: const EdgeInsets.only(top: 1.0),
                           child: Text(
-                            "Important for both of us",
-                            style: TextStyle(
+                            'subprivacy'.tr,
+                            style: const TextStyle(
                               fontSize: 17.5,
                             ),
                           ),
@@ -204,11 +281,11 @@ class _CreatorsState extends State<Information> {
                       ],
                     )),
                 const SizedBox(height: 15.0),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Creators",
-                    style: TextStyle(
+                    'creators'.tr,
+                    style: const TextStyle(
                         fontSize: 19,
                         fontFamily: 'Zagolovok',
                         fontWeight: FontWeight.bold),
@@ -217,11 +294,12 @@ class _CreatorsState extends State<Information> {
                 const SizedBox(
                   height: 15.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Abdullayev Meirkhan",
-                    style: TextStyle(fontSize: 17.5, fontFamily: 'Zagolovok'),
+                    'meir'.tr,
+                    style: const TextStyle(
+                        fontSize: 17.5, fontFamily: 'Zagolovok'),
                   ),
                 ),
                 const SizedBox(
@@ -238,11 +316,12 @@ class _CreatorsState extends State<Information> {
                 const SizedBox(
                   height: 10.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Binara Kuanysheva",
-                    style: TextStyle(fontSize: 17.5, fontFamily: 'Zagolovok'),
+                    'binara'.tr,
+                    style: const TextStyle(
+                        fontSize: 17.5, fontFamily: 'Zagolovok'),
                   ),
                 ),
                 const SizedBox(
@@ -259,11 +338,11 @@ class _CreatorsState extends State<Information> {
                 const SizedBox(
                   height: 15.0,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                   child: Text(
-                    "Useful Links",
-                    style: TextStyle(
+                    'links'.tr,
+                    style: const TextStyle(
                         fontSize: 19,
                         fontFamily: 'Zagolovok',
                         fontWeight: FontWeight.bold),
@@ -277,29 +356,29 @@ class _CreatorsState extends State<Information> {
                         "https://github.com/S-quark1/mab_project")),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 15.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Text(
-                            "GitHub",
-                            style: TextStyle(
+                            'git'.tr,
+                            style: const TextStyle(
                                 fontSize: 17.5, fontFamily: 'Zagolovok'),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Padding(
-                            padding: EdgeInsets.only(top: 1.0),
+                            padding: const EdgeInsets.only(top: 1.0),
                             child: Text(
-                              "Our code that you can use for your purposes",
-                              style: TextStyle(
+                              'subgit'.tr,
+                              style: const TextStyle(
                                 fontSize: 17.5,
                               ),
                             )),
                       ],
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 FlatButton(
@@ -307,23 +386,23 @@ class _CreatorsState extends State<Information> {
                         _launchURLApp("https://t.me/+w2yWIx3kgYI0MWNi")),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 15.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Text(
-                            "Telegram",
-                            style: TextStyle(
+                            'telegram'.tr,
+                            style: const TextStyle(
                                 fontSize: 17.5, fontFamily: 'Zagolovok'),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Padding(
-                            padding: EdgeInsets.only(top: 1.0),
+                            padding: const EdgeInsets.only(top: 1.0),
                             child: Text(
-                              "The latest version of the app, and the news",
-                              style: TextStyle(
+                              'subtelegram'.tr,
+                              style: const TextStyle(
                                 fontSize: 17.5,
                               ),
                             )),

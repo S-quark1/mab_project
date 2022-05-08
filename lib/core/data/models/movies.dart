@@ -26,6 +26,7 @@ class Movie {
     required this.dates,
     required this.seats,
   });
+
 }
 
 class MovieDate {

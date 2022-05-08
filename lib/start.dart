@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tadam/Creators.dart';
-import 'package:tadam/Information.dart';
+import 'package:tadam/LocaleString.dart';
+import 'package:tadam/Movies.dart';
+import 'package:tadam/AboutUs.dart';
 import 'package:tadam/Search.dart';
 import 'package:tadam/WhatNew.dart';
+import 'package:get/get.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(
-        title: "Tadaem",
+        title: "Tadam",
       ),
     );
   }
@@ -37,6 +39,9 @@ var _LightTheme = ThemeData(
     brightness: Brightness.light,
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
+    tabBarTheme: const TabBarTheme(
+      labelColor: Colors.black,
+    ),
     appBarTheme: const AppBarTheme(
         titleTextStyle: TextStyle(color: Colors.black),
         iconTheme: IconThemeData(
@@ -47,6 +52,9 @@ var _DarkTheme = ThemeData(
     brightness: Brightness.dark,
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
+    tabBarTheme: const TabBarTheme(
+      labelColor: Colors.white,
+    ),
     appBarTheme: const AppBarTheme(
         titleTextStyle: TextStyle(color: Colors.white),
         iconTheme: IconThemeData(
@@ -55,19 +63,18 @@ var _DarkTheme = ThemeData(
 
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
-
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour > 6 && hour < 9) {
-      return 'Good Morning!';
+      return 'goodmorning'.tr;
     }
     if (hour > 9 && hour < 18) {
-      return 'Good Afternoon!';
+      return 'goodafternoon'.tr;
     }
     if (hour > 18 && hour < 23) {
-      return 'Good Evening';
+      return 'goodevening'.tr;
     }
-    return 'Good Night!';
+    return 'goodnight'.tr;
   }
 
   final screens = [
@@ -78,7 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: LocalString(),
+        locale: Locale('en','US'),
         debugShowCheckedModeBanner: false,
         theme: _iconBool ? _DarkTheme : _LightTheme,
         home: Scaffold(
@@ -155,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icons.home,
                   size: 30,
                 ),
-                label: "Search"),
+                label: 'Search'),
             NavigationDestination(
                 icon: Icon(
                   Icons.movie_creation_outlined,

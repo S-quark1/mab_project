@@ -3,7 +3,6 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 import 'package:tadam/core/data/data.dart';
-import 'package:tadam/core/constants/constants.dart';
 import 'package:tadam/features/movie/movie_page.dart';
 
 class MoviesView extends StatefulWidget {
@@ -108,7 +107,7 @@ class _MoviesViewState extends State<MoviesView>
                             ),
                             boxShadow: [
                               BoxShadow(
-                                blurRadius: 50,
+                                blurRadius: 500,
                                 offset: const Offset(0, 25),
                                 color: Colors.purple.withOpacity(.2),
                               ),

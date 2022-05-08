@@ -1,7 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:tadam/Info.dart';
+import 'package:tadam/OnBoarding.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
@@ -16,10 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
-        splash: Lottie.asset(
-          'assets/image/97111-loading-spinner-dots.json',
+        splash: Image.asset(
+          'assets/image/logotadam.png',
         ),
-        splashIconSize: 300,
+        splashIconSize: 350,
         nextScreen: Info(),
       ),
     );

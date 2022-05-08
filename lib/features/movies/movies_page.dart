@@ -49,7 +49,6 @@ class _MoviesPageState extends State<MoviesPage>
           labelStyle: TextStyle(fontSize: 20.0, fontFamily: 'Zagolovok'),
           controller: _tabController,
           isScrollable: true,
-          labelColor: Colors.black,
           tabs: const [
             Tab(text: 'Chaplin'),
             Tab(text: 'Saryarqa'),
