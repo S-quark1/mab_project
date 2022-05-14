@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tadam/AboutUs.dart';
 
 class Creators extends StatefulWidget {
@@ -23,61 +24,61 @@ class _CreatorsState extends State<Creators> {
               width: double.infinity,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
+                children:  [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Chip(
                       label: Text(
-                        "All",
-                        style: TextStyle(
+                        "all".tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "Zagolovok",
                         ),
                       ),
                       backgroundColor: Colors.purple,
-                      padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Chip(
                       label: Text(
-                        "Anime",
-                        style: TextStyle(
+                        "anime".tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "Zagolovok",
                         ),
                       ),
                       backgroundColor: Colors.purple,
-                      padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Chip(
                       label: Text(
-                        "Adventure",
-                        style: TextStyle(
+                        "adv".tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "Zagolovok",
                         ),
                       ),
                       backgroundColor: Colors.purple,
-                      padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Chip(
                       label: Text(
-                        "Comedian",
-                        style: TextStyle(
+                        "com".tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "Zagolovok",
                         ),
                       ),
                       backgroundColor: Colors.purple,
-                      padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                     ),
                   ),
                 ],
@@ -87,12 +88,12 @@ class _CreatorsState extends State<Creators> {
               height: 12.0,
             ),
             Row(
-              children: const [
+              children:  [
                 Padding(
-                  padding: EdgeInsets.only(left: 12.0),
+                  padding: const EdgeInsets.only(left: 12.0),
                   child: Text(
-                    "Recently Searched",
-                    style: TextStyle(
+                    "res".tr,
+                    style: const TextStyle(
                       color: Colors.purple,
                       fontSize: 25,
                       fontFamily: "Zagolovok",
@@ -143,12 +144,12 @@ class _CreatorsState extends State<Creators> {
               height: 25.0,
             ),
             Row(
-              children: const [
+              children:  [
                 Padding(
-                  padding: EdgeInsets.only(left: 12.0),
+                  padding: const EdgeInsets.only(left: 12.0),
                   child: Text(
-                    "Top Anime",
-                    style: TextStyle(
+                    'topanime'.tr,
+                    style: const TextStyle(
                       color: Colors.purple,
                       fontSize: 25,
                       fontFamily: "Zagolovok",
@@ -200,11 +201,11 @@ class _CreatorsState extends State<Creators> {
               height: 12.0,
             ),
             Row(
-              children: const [
+              children: [
                 Padding(
                   padding: EdgeInsets.only(left: 12.0),
                   child: Text(
-                    "Top Drama",
+                    "topdrama".tr,
                     style: TextStyle(
                       color: Colors.purple,
                       fontSize: 25,
@@ -256,11 +257,11 @@ class _CreatorsState extends State<Creators> {
               height: 12.0,
             ),
             Row(
-              children: const [
+              children: [
                 Padding(
                   padding: EdgeInsets.only(left: 12.0),
                   child: Text(
-                    "Top Horror",
+                    "tophorror".tr,
                     style: TextStyle(
                       color: Colors.purple,
                       fontFamily: "Zagolovok",
@@ -347,7 +348,7 @@ class _CreatorsState extends State<Creators> {
           ),
           Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.star,
                 color: Colors.amber,
               ),

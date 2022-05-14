@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tadam/Back_End/views/search_page.dart';
 import 'package:tadam/features/movies/movies_page.dart';
 class Search extends StatefulWidget {
@@ -37,21 +38,21 @@ class _SearchState extends State<Search> {
                   padding: const EdgeInsets.only(left: 20.0, top: 20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children:  [
                       Text(
-                        "Tadam!",
-                        style: TextStyle(
+                        "tadam".tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontFamily: 'Zagolovok',
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15.0,
                       ),
                       Text(
-                        'Upload any picture, or a\nscreenshot from the movie',
-                        style: TextStyle(
+                        'tadamsub'.tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontFamily: 'Shrift',
@@ -86,11 +87,11 @@ class _SearchState extends State<Search> {
                             builder: (context) => const SearchPage()),
                       );
                     },
-                    child: const Padding(
-                      padding: EdgeInsets.all(20.0),
+                    child:  Padding(
+                      padding: const EdgeInsets.all(20.0),
                       child: Text(
-                        "Upload image",
-                        style: TextStyle(fontFamily: 'Zagolovok'),
+                        "buttontadam".tr,
+                        style: const TextStyle(fontFamily: 'Zagolovok'),
                       ),
                     ),
                   ),
@@ -120,21 +121,21 @@ class _SearchState extends State<Search> {
                   padding: const EdgeInsets.only(left: 20.0, top: 20.0, bottom: 20.0,right: 20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
+                    children: [
                       Text(
-                        "Ticket booking!",
-                        style: TextStyle(
+                        "ticket".tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontFamily: 'Zagolovok',
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15.0,
                       ),
                       Text(
-                        'Take your favorite seats - buy tickets online! \n\n\n\n\n',
-                        style: TextStyle(
+                        'ticketsub'.tr,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontFamily: 'Shrift',
@@ -170,11 +171,11 @@ class _SearchState extends State<Search> {
                             builder: (context) => const MoviesPage()),
                       );
                     },
-                    child: const Padding(
-                      padding: EdgeInsets.all(20.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
                       child: Text(
-                        "Book ticket",
-                        style: TextStyle(fontFamily: 'Zagolovok'),
+                        "buttonticket".tr,
+                        style: const TextStyle(fontFamily: 'Zagolovok'),
                       ),
                     ),
                   ),

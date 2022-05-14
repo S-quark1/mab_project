@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -49,10 +50,10 @@ class _SecondRouteState extends State<SecondRoute> {
                     color: Colors.black,
                   ),
                 )),
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(top: 5.0, left: 5.0),
               child: Text(
-                "Updates",
+                "upd".tr,
                 style: TextStyle(
                     fontSize: 23, fontFamily: "Zagolovok", color: Colors.black),
               ),
